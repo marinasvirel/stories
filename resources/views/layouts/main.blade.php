@@ -12,6 +12,7 @@
   <header>
     <div class="container">
       <a href="{{ route('home') }}">Главная</a>
+      <a href="{{ route('create') }}">Добавить историю</a>
     </div>
   </header>
   <main>
