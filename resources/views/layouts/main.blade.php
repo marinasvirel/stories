@@ -23,6 +23,7 @@
     <div class="container">
       @auth
       <a href="{{ route('logout') }}">Выход для модератора</a>
+      <a href="{{ route('dashboard') }}">Админка</a>
       @endauth
       @guest
       <a href="{{ route('login') }}">Вход для модератора</a>
