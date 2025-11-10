@@ -31,7 +31,6 @@
       @endguest
     </div>
   </footer>
-
 </body>
 
 </html>
