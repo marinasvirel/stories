@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Интересные истории | Добавить историю')
 @section('content')
-<form action="{{ route('add') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('create') }}" method="post" enctype="multipart/form-data">
   @csrf
   <input type="text" name="name" placeholder="Имя" value="{{ old('name') }}" autocorrect autofocus>
   <input type="email" name="email" placeholder="E-mail" value="{{ old('email') }}">

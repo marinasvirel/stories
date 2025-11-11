@@ -8,7 +8,7 @@ use App\Models\Tag;
 
 class PostController extends Controller
 {
-    public function create()
+    public function createView()
     {
         $tagsAll = Tag::all();
         $tags = [];
@@ -18,7 +18,7 @@ class PostController extends Controller
         return view('post.create', ['tags' => $tags]);
     }
 
-    public function add(Request $request)
+    public function create(Request $request)
     {
         // dump($request->input('tags'));
         dump($request->all());

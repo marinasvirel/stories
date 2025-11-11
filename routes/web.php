@@ -11,5 +11,5 @@ Route::post('login', [UserController::class, 'authenticate'])->name('authenticat
 Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('create', [PostController::class, 'create'])->name('create');
-Route::post('create', [PostController::class, 'add'])->name('add');
+Route::get('create', [PostController::class, 'createView'])->name('createView');
+Route::post('create', [PostController::class, 'create'])->name('create');
