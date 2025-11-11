@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
     public function create()
     {
-        $tags = ['#tag1', '#tag2', '#tag3'];
+        $tagsAll = Tag::all();
+        $tags = [];
+        foreach ($tagsAll as $value) {
+            $tags[] = $value['name'];
+        }
         return view('post.create', ['tags' => $tags]);
     }
 
