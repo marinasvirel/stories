@@ -29,4 +29,11 @@ class PostController extends Controller
         $posts = Post::with('tags')->get();
         return view('home', ['posts' => $posts]);
     }
+
+    public function readDetail($id)
+    {
+        $post = Post::findOrFail($id);
+        // dump($post);
+        return view('post.read', ['post' => $post]);
+    }
 }
