@@ -18,8 +18,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(1)->create();
-        Post::factory(10)->create();
-        Tag::factory(7)->create();
+        Post::factory(5)->create();
+        Tag::factory(6)->create();
+
+        $this->call(PostTagSeeder::class);
 
         // User::factory()->create([
         //     'name' => 'Test User',

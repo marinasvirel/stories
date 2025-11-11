@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class PostFactory extends Factory
 {
@@ -20,7 +21,7 @@ class PostFactory extends Factory
             'author_email' => $this->faker->unique()->safeEmail(),
             'title' => $this->faker->sentence(),
             'text' => $this->faker->paragraph(),
-            'img' => $this->faker->imageUrl(),
+            'img' => Str::random(5) . 'jpg',
             'is_publish' => false,
         ];
     }

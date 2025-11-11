@@ -21,7 +21,7 @@ class PostController extends Controller
 
     public function read()
     {
-        $posts = Post::all();
+        $posts = Post::with('tags')->get();
         return view('home', ['posts' => $posts]);
     }
 }

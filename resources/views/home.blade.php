@@ -5,6 +5,11 @@
 @foreach ($posts as $post)
 <h2>{{ $post->title }}</h2>
 <p>{{ $post->text }}</p>
+<img src="{{ $post->img }}" alt="img">
+<ul>
+  @foreach($post->tags as $tag)
+  <li>{{ $tag->name }}</li>
+  @endforeach
+</ul>
 @endforeach
-
 @endsection
