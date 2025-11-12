@@ -1,36 +1,30 @@
 @extends('layouts.main')
 @section('title', 'Интересные истории | Добавить историю')
 @section('content')
-<form action="{{ route('create') }}" method="post" enctype="multipart/form-data">
-  @csrf
-  <input type="text" name="name" placeholder="Имя" value="{{ old('name') }}" autocorrect autofocus>
-  <input type="email" name="email" placeholder="E-mail" value="{{ old('email') }}">
-  <input type="text" name="title" placeholder="Заголовок" value="{{ old('title') }}">
-  <textarea name="text" id="" autocorrect placeholder="Текст"></textarea>
-  <input type="file" name="img" accept="image/*">
-  <textarea id="target-textarea" placeholder="Тэги через запятую" name="tags"></textarea>
+<div>
+  @if($errors->any())
   <ul>
-    @foreach($tags as $tag)
-    <li class="text-item">{{ $tag }}</li>
+    @foreach($errors->all() as $error)
+    <li>{{ $error }}</li>
     @endforeach
   </ul>
+  @endif
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+  @csrf
+  <input type="text" name="author_name" placeholder="Имя" value="{{ old('name') }}" autocorrect autofocus>
+  <input type="email" name="author_email" placeholder="E-mail" value="{{ old('email') }}">
+  <input type="text" name="title" placeholder="Заголовок" value="{{ old('title') }}">
+  <textarea name="text" id="" autocorrect placeholder="Текст"></textarea>
+  <input name="img" type="file" accept="image/*">
+  <label for="existing_tags">Выбрать существующие теги:</label>
+  <select name="existing_tags[]" id="existing_tags" multiple>
+    @foreach($tags as $tag)
+    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+    @endforeach
+  </select>
+  <label for="new_tags">Добавить новые теги (через запятую):</label>
+  <input type="text" name="new_tags" id="new_tags" placeholder="например: php, laravel, js">
   <button type="submit">Добавить</button>
 </form>
-<script>
-  // 1. Получаем ссылки на все текстовые элементы и на целевое поле
-  const textItems = document.querySelectorAll('.text-item');
-  const targetTextarea = document.getElementById('target-textarea');
-
-  // 2. Добавляем обработчик события 'click' к каждому текстовому элементу
-  textItems.forEach(item => {
-    item.addEventListener('click', function() {
-      // 3. Получаем текстовое содержимое элемента, по которому кликнули
-      const clickedText = this.textContent;
-
-      // 4. Добавляем этот текст в текстовое поле (с новой строки)
-      // Используем += для добавления, а не замены текста
-      targetTextarea.value += clickedText + ', ';
-    });
-  });
-</script>
 @endsection

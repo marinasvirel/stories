@@ -12,7 +12,7 @@
   <header>
     <div class="container">
       <a href="{{ route('home') }}">Главная</a>
-      <a href="{{ route('create') }}">Добавить историю</a>
+      <a href="{{ route('createView') }}">Добавить историю</a>
     </div>
   </header>
   <main>

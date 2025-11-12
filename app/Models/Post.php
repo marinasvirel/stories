@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Post extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'author_name',
+        'author_email',
+        'title',
+        'text',
+        'img',
+    ];
 
     public function tags()
     {
