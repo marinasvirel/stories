@@ -13,7 +13,7 @@
   <li>{{ $tag->name }}</li>
   @endforeach
 </ul>
-<a href="moderation/post/{{ $post->id }}">Читать</a>
+<a href="moderation/post/{{ $post->id }}" class="main-link">Читать</a>
 @endforeach
 
 @endsection

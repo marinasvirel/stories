@@ -12,6 +12,6 @@
   <li>{{ $tag->name }}</li>
   @endforeach
 </ul>
-<a href="post/{{ $post->id }}">Читать</a>
+<a href="post/{{ $post->id }}" class="main-link">Читать</a>
 @endforeach
 @endsection
