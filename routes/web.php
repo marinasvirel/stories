@@ -9,7 +9,9 @@ Route::get('post/{id}', [PostController::class, 'readDetail'])->name('readDetail
 
 Route::get('login', [UserController::class, 'login'])->name('login');
 Route::post('login', [UserController::class, 'authenticate'])->name('authenticate');
-Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+Route::get('dashboard', [PostController::class, 'readModer'])->name('readModer');
+Route::get('moderation/post/{id}', [PostController::class, 'readDetailModer'])->name('moderation');
+Route::post('moderation/post/{id}', [PostController::class, 'moderationPost'])->name('moderationPost');
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('create', [PostController::class, 'createView'])->name('createView');

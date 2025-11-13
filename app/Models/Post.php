@@ -15,6 +15,7 @@ class Post extends Model
         'title',
         'text',
         'img',
+        'is_publish',
     ];
 
     public function tags()

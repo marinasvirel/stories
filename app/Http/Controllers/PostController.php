@@ -16,7 +16,6 @@ class PostController extends Controller
 
     public function create(Request $request)
     {
-        // dump($request->input('tags'));
         $data = $request->validate([
             'author_name' => 'required|string|max:255',
             'author_email' => 'required|email|max:255',
@@ -31,7 +30,7 @@ class PostController extends Controller
         //Убедитесь, что ваше приложение может сохранять файлы в публично доступном месте. По умолчанию файлы сохраняются в storage/app/public. Вам нужно создать символическую ссылку, чтобы сделать их доступными из веба:
         // php artisan storage:link 
         if ($request->hasFile('img')) {
-            // отправляем файд в папку uploads
+            // отправляем файл в папку uploads
             $imagePath = $request->file('img')->store('uploads', 'public');
             // добавляем в общий массив
             $data['img'] = $imagePath;
@@ -59,14 +58,13 @@ class PostController extends Controller
 
         // 3. Синхронизируем все теги с постом
         $post->tags()->sync($tagIdsToAttach);
-        
+
         return redirect(route('createView'));
-        // dump($request->all());
     }
 
     public function read()
     {
-        $posts = Post::with('tags')->get();
+        $posts = $this->posts(true);
         return view('home', ['posts' => $posts]);
     }
 
@@ -74,5 +72,47 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         return view('post.read', ['post' => $post]);
+    }
+
+    public function readModer()
+    {
+        $posts = $this->posts(false);
+        return view('user.dashboard', ['posts' => $posts]);
+    }
+
+    public function readDetailModer($id)
+    {
+        $post = Post::findOrFail($id);
+        return view('user.moderation', ['post' => $post]);
+    }
+
+    public function moderationPost(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
+        if ($request->input('action') === 'publish') {
+            $post->update(['is_publish' => true]);
+            return redirect()->route('readModer');
+        }
+
+        if ($request->input('action') === 'reject') {
+            $post->delete();
+            return redirect()->route('readModer');
+        }
+    }
+
+    public function publish() {}
+
+    public function reject() {}
+
+    private function posts($arg)
+    {
+        $postsAll = Post::with('tags')->get();
+        $posts = [];
+        foreach ($postsAll as $key => $value) {
+            if ($value->is_publish == $arg) {
+                $posts[] = $value;
+            }
+        }
+        return $posts;
     }
 }
