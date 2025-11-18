@@ -1,3 +1,28 @@
+@font-face {
+  font-family: "Merriweather_24pt-Regular";
+  src: url("fonts/Merriweather_24pt-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Merriweather_24pt-Bold";
+  src: url("fonts/Merriweather_24pt-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Merriweather_24pt-LightItalic";
+  src: url("fonts/Merriweather_24pt-LightItalic.ttf");
+}
+
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url("fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Roboto-Light";
+  src: url("fonts/Roboto-Light.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +39,7 @@
 }
 
 body {
+  font-family: "Merriweather_24pt-Regular";
   font-size: 16px;
   color: var(--black);
 }
@@ -22,10 +48,15 @@ ul {
   list-style: none;
 }
 
+p {
+  line-height: 170%;
+}
+
 input,
 textarea,
 option,
 select {
+  font-family: "Roboto-Regular";
   display: block;
   background-color: var(--grey);
   padding: 10px;
@@ -33,7 +64,6 @@ select {
   outline: 1px solid white;
   border: none;
   font-size: inherit;
-  font-family: inherit;
   transition: all 1s linear;
 }
 
@@ -48,6 +78,7 @@ textarea:focus {
 }
 
 button {
+  font-family: "Roboto-Regular";
   border: none;
   font-size: inherit;
   padding: 12px;
@@ -60,6 +91,7 @@ button {
 
 .header-link,
 .main-link {
+  font-family: "Roboto-Regular";
   display: inline-block;
   padding: 8px 12px 8px 12px;
   background-color: var(--blue);
@@ -82,11 +114,13 @@ button:focus,
 }
 
 h1 {
+  font-family: "Merriweather_24pt-Bold";
   font-size: 32px;
   margin-bottom: 30px;
 }
 
 h2 {
+  font-family: "Merriweather_24pt-Bold";
   font-size: 24px;
   margin-bottom: 17px;
 }
@@ -128,6 +162,10 @@ footer .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.footer-link {
+  font-family: "Roboto-Regular";
 }
 
 .footer-link:hover {
@@ -172,7 +210,7 @@ footer .container {
 }
 
 .stories-text-container {
-  height: 167px;
+  height: 164px;
   padding: 10px;
   border: 1px dashed var(--black);
   overflow: hidden;
@@ -180,7 +218,7 @@ footer .container {
   flex-direction: column;
 }
 
-.stories-text{
+.stories-text {
   flex-grow: 1;
   overflow: hidden;
 }
@@ -188,4 +226,14 @@ footer .container {
 .main-link {
   flex: none;
   margin-left: auto;
+}
+
+.story-author {
+  font-size: 16px;
+  font-family: "Merriweather_24pt-LightItalic";
+}
+
+.creator {
+  font-size: 14px;
+  font-family: "Roboto-Light";
 }

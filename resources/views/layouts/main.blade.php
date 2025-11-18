@@ -24,7 +24,7 @@
   </main>
   <footer>
     <div class="container container-space">
-      <span>© Зинченко Марина, 2025</span>
+      <span class="creator">© Зинченко Марина, 2025</span>
       @auth
       <a href="{{ route('logout') }}" class="footer-link">Выход для модератора</a>
       <a href="{{ route('readModer') }}" class="footer-link">Админка</a>
