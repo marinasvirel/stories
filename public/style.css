@@ -18,8 +18,8 @@ body {
   color: var(--black);
 }
 
-img {
-  max-width: 100%;
+ul {
+  list-style: none;
 }
 
 input,
@@ -83,10 +83,12 @@ button:focus,
 
 h1 {
   font-size: 32px;
+  margin-bottom: 30px;
 }
 
 h2 {
   font-size: 24px;
+  margin-bottom: 17px;
 }
 
 header,
@@ -96,7 +98,7 @@ footer {
 }
 
 header {
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   height: 100px;
 }
@@ -130,4 +132,60 @@ footer .container {
 
 .footer-link:hover {
   color: var(--hover);
+}
+
+.stories-item {
+  margin-bottom: 50px;
+}
+
+.stories-tags {
+  display: flex;
+  gap: 10px;
+  color: var(--blue);
+  margin-bottom: 17px;
+}
+
+.stories-content-box {
+  display: flex;
+  gap: 20px;
+}
+
+.stories-img-box {
+  flex: none;
+  width: 223px;
+  height: 223px;
+  background-color: aqua;
+}
+
+.stories-img {
+  width: 223px;
+  height: 223px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.stories-text-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stories-text-container {
+  height: 167px;
+  padding: 10px;
+  border: 1px dashed var(--black);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.stories-text{
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.main-link {
+  flex: none;
+  margin-left: auto;
 }
