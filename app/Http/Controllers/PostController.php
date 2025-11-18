@@ -21,7 +21,7 @@ class PostController extends Controller
             'author_email' => 'required|email|max:255',
             'title' => 'required|string|max:255',
             'text' => 'required|string',
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'existing_tags' => 'array',
             'existing_tags.*' => 'exists:tags,id',
             'new_tags' => 'nullable|string|max:255',
@@ -99,10 +99,6 @@ class PostController extends Controller
             return redirect()->route('readModer');
         }
     }
-
-    public function publish() {}
-
-    public function reject() {}
 
     private function posts($arg)
     {

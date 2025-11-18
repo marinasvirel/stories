@@ -38,6 +38,11 @@
   --blue: #27449C;
 }
 
+html {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Merriweather_24pt-Regular";
   font-size: 16px;
