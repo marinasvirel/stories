@@ -102,13 +102,10 @@ class PostController extends Controller
 
     private function posts($arg)
     {
-        $postsAll = Post::with('tags')->get();
-        $posts = [];
-        foreach ($postsAll as $key => $value) {
-            if ($value->is_publish == $arg) {
-                $posts[] = $value;
-            }
-        }
+        $posts = Post::with('tags')
+            ->where('is_publish', $arg)
+            ->paginate(3);
+
         return $posts;
     }
 }

@@ -22,4 +22,5 @@
     </li>
     @endforeach
   </ul>
+  {{ $posts->links('pagination') }}
 </section>

@@ -137,7 +137,7 @@ footer {
 }
 
 header {
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   height: 100px;
 }
@@ -241,4 +241,35 @@ footer .container {
 .creator {
   font-size: 14px;
   font-family: "Roboto-Light";
+}
+
+.my-custom-pagination-container {
+  display: flex;
+}
+
+.pagination-list {
+  display: flex;
+  gap: 10px;
+}
+
+.pagination-link {
+  display: block;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  color: var(--black);
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.pagination-link:hover {
+  background-color: var(--hover);
+  color: var(--white);
+  border-color: var(--focus);
+}
+
+.active-page .pagination-link {
+  background-color: var(--focus);
+  color: var(--white);
+  border-color: var(--focus);
+  cursor: default;
 }
