@@ -57,6 +57,10 @@ p {
   line-height: 170%;
 }
 
+img{
+  max-width: 100%;
+}
+
 input,
 textarea,
 option,
@@ -231,6 +235,30 @@ footer .container {
 .main-link {
   flex: none;
   margin-left: auto;
+}
+
+.story-content{
+  display: flex;
+  gap: 20px;
+  margin-bottom: 17px;
+}
+
+.story-text{
+  width: 50%;
+  height: 50vh;
+  overflow: auto;
+}
+
+.story-img{
+  width: 50%;
+  object-fit: cover;
+  height: 50vh;
+}
+
+.story-content-under{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 17px;
 }
 
 .story-author {
