@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Tag;
@@ -14,18 +15,9 @@ class PostController extends Controller
         return view('post.create', compact('tags'));
     }
 
-    public function create(Request $request)
+    public function create(PostRequest $request)
     {
-        $data = $request->validate([
-            'author_name' => 'required|string|max:255',
-            'author_email' => 'required|email|max:255',
-            'title' => 'required|string|max:255',
-            'text' => 'required|string',
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'existing_tags' => 'array',
-            'existing_tags.*' => 'exists:tags,id',
-            'new_tags' => 'nullable|string|max:255',
-        ]);
+        $data = $request->validated();
 
         //Убедитесь, что ваше приложение может сохранять файлы в публично доступном месте. По умолчанию файлы сохраняются в storage/app/public. Вам нужно создать символическую ссылку, чтобы сделать их доступными из веба:
         // php artisan storage:link 

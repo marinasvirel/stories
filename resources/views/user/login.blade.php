@@ -4,7 +4,7 @@
 <form class="create-post" action="{{ route('authenticate') }}" method="post">
   @csrf
   <label for="author_name">Ваш email</label>
-  <input type="email" name="email" placeholder="E-mail" value="{{ old('email') }}" autofocus>
+  <input type="text" name="email" placeholder="E-mail" value="{{ old('email') }}" autofocus>
   <div class="error-box">
     @error('email')
     {{ $message }}
