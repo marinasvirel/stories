@@ -17,7 +17,7 @@ class TagFactory extends Factory
     public function definition()
     {
         return [
-            'name' => '#' . Str::random(10),
+            'name' => Str::random(10),
         ];
     }
 }

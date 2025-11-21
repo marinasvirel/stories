@@ -78,6 +78,21 @@ class PostController extends Controller
         return view('user.moderation', ['post' => $post]);
     }
 
+    public function showByTag($tag)
+    {
+        $postsAll = $this->posts(true);
+        $posts = [];
+        foreach ($postsAll as $key => $post) {
+            foreach ($post->tags as $postTag) {
+                if ($postTag->name == $tag) {
+                    $posts[] = $post;
+                }
+            }
+        }
+        // dump($posts);
+        return view('post.tag', ['posts' => $posts]);
+    }
+
     public function moderationPost(Request $request, $id)
     {
         $post = Post::findOrFail($id);
@@ -96,7 +111,7 @@ class PostController extends Controller
     {
         $posts = Post::with('tags')
             ->where('is_publish', $arg)
-            ->paginate(3);
+            ->get();
 
         return $posts;
     }

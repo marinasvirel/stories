@@ -5,7 +5,9 @@
       <h2>{{ $post->title }}</h2>
       <ul class="stories-tags">
         @foreach($post->tags as $tag)
-        <li class="stories-tags-item">{{ $tag->name }}</li>
+        <a href="{{ route('showByTag', ['tag' => $tag->name ]) }}">
+          <li class="stories-tags-item">{{ $tag->name }}</li>
+        </a>
         @endforeach
       </ul>
       <div class="stories-content-box">
@@ -22,5 +24,4 @@
     </li>
     @endforeach
   </ul>
-  {{ $posts->links('pagination') }}
 </section>
