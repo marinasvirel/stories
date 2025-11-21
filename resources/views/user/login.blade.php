@@ -1,16 +1,22 @@
 @extends('layouts.main')
 @section('title', 'Интересные истории | Авторизация')
 @section('content')
-<form action="{{ route('authenticate') }}" method="post">
+<form class="create-post" action="{{ route('authenticate') }}" method="post">
   @csrf
-  <input type="email" name="email" placeholder="E-mail" value="{{ old('email') }}">
-  @error('email')
-  <p>{{ $message }}</p>
-  @enderror
+  <label for="author_name">Ваш email</label>
+  <input type="email" name="email" placeholder="E-mail" value="{{ old('email') }}" autofocus>
+  <div class="error-box">
+    @error('email')
+    {{ $message }}
+    @enderror
+  </div>
+  <label for="author_name">Ваш пароль</label>
   <input type="password" name="password" placeholder="Пароль">
-  @error('password')
-  <p>{{ $message }}</p>
-  @enderror
+  <div class="error-box">
+    @error('password')
+    {{ $message }}
+    @enderror
+  </div>
   <button type="submit">Авторизация</button>
 </form>
 @endsection

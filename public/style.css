@@ -99,15 +99,17 @@ button {
   transition: all .3s linear;
 }
 
-.create-post {
-  max-width: 100%;
-}
-
 .create-post label {
   text-align: right;
   font-size: 14px;
   display: block;
   margin-bottom: 5px;
+}
+
+.error-box {
+  font-size: 14px;
+  color: red;
+  height: 28px;
 }
 
 .header-link,
