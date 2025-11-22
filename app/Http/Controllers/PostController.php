@@ -90,7 +90,7 @@ class PostController extends Controller
             ->whereHas('tags', function ($query) use ($tag) {
                 $query->where('name', $tag);
             })
-            ->paginate(1);
+            ->paginate(3);
 
         return view('post.tag', ['posts' => $posts]);
     }

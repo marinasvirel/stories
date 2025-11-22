@@ -24,5 +24,5 @@
     </li>
     @endforeach
   </ul>
-  {{ $posts->links() }}
+  {{ $posts->links('paginator') }}
 </section>

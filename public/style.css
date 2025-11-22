@@ -284,3 +284,27 @@ footer .container {
   font-size: 14px;
   font-family: "Roboto-Light";
 }
+
+.pagination-list {
+    display: flex; 
+    gap: 10px;         
+}
+
+.pagination-link {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: var(--white);
+    background-color: var(--blue);
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.pagination-link:hover {
+    background-color: var(--hover);
+}
+
+.pagination-item.active .pagination-link {
+    background-color: var(--focus);               
+    cursor: default;          
+}
