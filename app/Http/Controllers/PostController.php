@@ -56,7 +56,9 @@ class PostController extends Controller
 
     public function read()
     {
-        $posts = $this->posts(true);
+        $posts = Post::with('tags')
+            ->where('is_publish', true)
+            ->paginate(3);
         return view('home', ['posts' => $posts]);
     }
 
@@ -68,7 +70,9 @@ class PostController extends Controller
 
     public function readModer()
     {
-        $posts = $this->posts(false);
+        $posts = Post::with('tags')
+            ->where('is_publish', false)
+            ->paginate(3);
         return view('user.dashboard', ['posts' => $posts]);
     }
 
@@ -80,16 +84,14 @@ class PostController extends Controller
 
     public function showByTag($tag)
     {
-        $postsAll = $this->posts(true);
-        $posts = [];
-        foreach ($postsAll as $key => $post) {
-            foreach ($post->tags as $postTag) {
-                if ($postTag->name == $tag) {
-                    $posts[] = $post;
-                }
-            }
-        }
-        // dump($posts);
+
+        $posts = Post::with('tags')
+            ->where('is_publish', true)
+            ->whereHas('tags', function ($query) use ($tag) {
+                $query->where('name', $tag);
+            })
+            ->paginate(1);
+
         return view('post.tag', ['posts' => $posts]);
     }
 
@@ -105,14 +107,5 @@ class PostController extends Controller
             $post->delete();
             return redirect()->route('readModer');
         }
-    }
-
-    private function posts($arg)
-    {
-        $posts = Post::with('tags')
-            ->where('is_publish', $arg)
-            ->get();
-
-        return $posts;
     }
 }
