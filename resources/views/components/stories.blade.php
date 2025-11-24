@@ -5,9 +5,11 @@
       <h2>{{ $post->title }}</h2>
       <ul class="stories-tags">
         @foreach($post->tags as $tag)
-        <a href="{{ route('showByTag', ['tag' => $tag->name ]) }}">
-          <li class="stories-tags-item">{{ $tag->name }}</li>
-        </a>
+        <li class="stories-tags-item">
+          <a href="{{ route('showByTag', ['tag' => $tag->name ]) }}">
+            {{ $tag->name }}
+          </a>
+        </li>
         @endforeach
       </ul>
       <div class="stories-content-box">

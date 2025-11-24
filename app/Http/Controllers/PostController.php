@@ -59,7 +59,8 @@ class PostController extends Controller
         $posts = Post::with('tags')
             ->where('is_publish', true)
             ->paginate(3);
-        return view('home', ['posts' => $posts]);
+        $tags = Tag::all();    
+        return view('home', ['posts' => $posts, 'tags' => $tags]);
     }
 
     public function readDetail($id)
