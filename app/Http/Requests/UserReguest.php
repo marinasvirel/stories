@@ -23,7 +23,7 @@ class UserReguest extends FormRequest
     {
         return [
             'email' => ['required', 'email'],
-            'password' => ['required'],
+            'password' => ['required', 'min:3', 'max:20'],
         ];
     }
 
@@ -33,6 +33,8 @@ class UserReguest extends FormRequest
             'email.required' => 'Обязательное поле',
             'email.email' => 'Поле должно содержать E-mail',
             'password.required' => 'Обязательное поле',
+            'password.min' => 'Не менее 3 символов',
+            'password.max' => 'Не более 20 символов',
         ];
     }
 }

@@ -22,7 +22,7 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'author_name' => ['required', 'string', 'max:255'],
+            'author_name' => ['required', 'string', 'alpha', 'min:2'],
             'author_email' => ['required', 'email', 'max:255'],
             'title' => ['required', 'string', 'max:255'],
             'text' => ['required', 'string'],
@@ -37,9 +37,15 @@ class PostRequest extends FormRequest
     {
         return [
             'author_name.required' => 'Обязательное поле',
-            'author_name.string' => 'Строковое поле',
+            'author_name.alpha' => 'Только буквы',
+            'author_name.min' => 'Не менее 2 символов',
             'author_email.required' => 'Обязательное поле',
             'author_email.email' => 'Поле должно содержать E-mail',
+            'title.required' => 'Обязательное поле',
+            'title.max' => 'Не более 255 символов',
+            'text.required' => 'Обязательное поле',
+            'img.required' => 'Обязательное поле',
+            'existing_tags.required' => 'Обязательное поле',
         ];
     }
 }

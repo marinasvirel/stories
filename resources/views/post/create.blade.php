@@ -45,7 +45,7 @@
     @endforeach
   </select>
   <div class="error-box">
-    @error('existing_tags[]')
+    @error('existing_tags')
     {{ $message }}
     @enderror
   </div>
