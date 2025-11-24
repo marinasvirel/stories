@@ -157,13 +157,11 @@ footer {
 header {
   margin-bottom: 60px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  height: 100px;
 }
 
 footer {
   margin-top: 60px;
   box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
-  height: 100px;
 }
 
 main {
@@ -287,25 +285,70 @@ footer .container {
 }
 
 .pagination-list {
-    display: flex; 
-    gap: 10px;         
+  display: flex;
+  gap: 10px;
 }
 
 .pagination-link {
-    display: block;
-    padding: 8px 12px;
-    text-decoration: none;
-    color: var(--white);
-    background-color: var(--blue);
-    border-radius: 4px;
-    transition: background-color 0.3s;
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: var(--white);
+  background-color: var(--blue);
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
 .pagination-link:hover {
-    background-color: var(--hover);
+  background-color: var(--hover);
 }
 
 .pagination-item.active .pagination-link {
-    background-color: var(--focus);               
-    cursor: default;          
+  background-color: var(--focus);
+  cursor: default;
+}
+
+@media(max-width: 1100px) {
+  .footer-img {
+    display: none;
+  }
+}
+
+@media(max-width: 744px) {
+  h1 {
+    font-size: 24px;
+  }
+
+    h2 {
+    font-size: 20px;
+  }
+
+    body {
+    font-size: 14px;
+  }
+
+  .story-content {
+    flex-direction: column;
+  }
+
+  .story-text,
+  .story-img {
+    width: 100%;
+  }
+
+  .stories-content-box {
+    flex-direction: column;
+  }
+
+  .stories-text-container {
+    margin-bottom: 20px;
+  }
+}
+
+@media(max-width: 500px){
+  .container-space{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
 }

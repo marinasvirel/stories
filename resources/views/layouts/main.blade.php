@@ -32,7 +32,7 @@
       @guest
       <a href="{{ route('login') }}" class="footer-link">Вход для модератора</a>
       @endguest
-      <img src="{{ asset('footer-img.png') }}" class="footer-link" alt="footer-img">
+      <img src="{{ asset('footer-img.png') }}" class="footer-img" alt="footer-img">
     </div>
   </footer>
 </body>
