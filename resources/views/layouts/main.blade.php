@@ -20,6 +20,7 @@
     </header>
     <main>
       <div class="container">
+        <h1>Интересные истории</h1>
         @yield('content')
       </div>
     </main>

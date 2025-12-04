@@ -5,7 +5,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PostController::class, 'read'])->name('home');
-Route::get('post/{id}', [PostController::class, 'readDetail'])->name('readDetail');
+Route::get('post/{post}/{title_slug?}', [PostController::class, 'readDetail'])->name('readDetail');
 Route::get('/posts/tag/{tag}', [PostController::class, 'showByTag'])->name('showByTag');
 
 Route::get('login', [UserController::class, 'login'])->name('login');

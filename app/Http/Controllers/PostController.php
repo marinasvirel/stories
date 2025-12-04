@@ -6,6 +6,7 @@ use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Tag;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -63,9 +64,15 @@ class PostController extends Controller
         return view('home', ['posts' => $posts, 'tags' => $tags]);
     }
 
-    public function readDetail($id)
+    public function readDetail(Post $post, $title_slug = null)
     {
-        $post = Post::findOrFail($id);
+        $expectedSlug = Str::slug($post->title);
+        if ($title_slug !== $expectedSlug) {
+            return redirect()->route('readDetail', [
+                'post' => $post->id,
+                'title_slug' => $expectedSlug
+            ], 301);
+        }
         return view('post.read', ['post' => $post]);
     }
 
