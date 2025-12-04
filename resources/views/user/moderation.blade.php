@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Интересные истории | Модерация')
+@section('title', $post->title)
 @section('content')
 <x-story :post="$post"/>
 <form action="" method="post">

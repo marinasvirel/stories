@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Интересные истории | Главная')
+@section('title', 'Интересные истории')
 @section('content')
 <h1>Интересные истории</h1>
 <ul class="stories-tags">

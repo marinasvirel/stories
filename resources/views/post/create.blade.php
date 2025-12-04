@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Интересные истории | Добавить историю')
+@section('title', 'Добавить историю')
 @section('content')
 <form class="create-post" action="" method="post" enctype="multipart/form-data">
   @csrf

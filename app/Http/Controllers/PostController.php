@@ -93,7 +93,7 @@ class PostController extends Controller
             })
             ->paginate(3);
 
-        return view('post.tag', ['posts' => $posts]);
+        return view('post.tag', ['posts' => $posts, 'tag' => $tag]);
     }
 
     public function moderationPost(Request $request, $id)

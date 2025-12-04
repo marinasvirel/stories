@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Интересные истории | Добавить историю')
+@section('title', $post->title)
 @section('content')
 <x-story :post="$post"/>
 @endsection
