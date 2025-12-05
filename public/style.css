@@ -76,6 +76,7 @@ p {
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
 input,
@@ -234,12 +235,12 @@ footer .container {
   background-color: grey;
 }
 
-.stories-img {
+/* .stories-img {
   width: 223px;
   height: 223px;
   object-fit: cover;
   object-position: center;
-}
+} */
 
 .stories-text-box {
   flex: 1;

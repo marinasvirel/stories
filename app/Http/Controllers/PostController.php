@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Support\Str;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -20,13 +23,43 @@ class PostController extends Controller
     {
         $data = $request->validated();
 
-        //Убедитесь, что ваше приложение может сохранять файлы в публично доступном месте. По умолчанию файлы сохраняются в storage/app/public. Вам нужно создать символическую ссылку, чтобы сделать их доступными из веба:
-        // php artisan storage:link 
+        // 1. Инициализируем менеджер изображений V3
+        $manager = new ImageManager(new Driver());
+
         if ($request->hasFile('img')) {
-            // отправляем файл в папку uploads
-            $imagePath = $request->file('img')->store('uploads', 'public');
-            // добавляем в общий массив
-            $data['img'] = $imagePath;
+            $imageFile = $request->file('img');
+
+            // Генерируем уникальное имя файла с расширением
+            $extension = $imageFile->getClientOriginalExtension();
+            $fileName = uniqid() . '.' . $extension;
+
+            // Базовый путь для основного изображения
+            $basePath = 'uploads/' . $fileName;
+
+            // --- Работа с изображением 587x587 ---
+            // Читаем изображение из файла запроса
+            $image587 = $manager->read($imageFile->getRealPath());
+            // Обрезаем и подгоняем размер (аналог fit() в V2)
+            $image587->cover(587, 587);
+
+            // Сохраняем основную версию на диск 'public'
+            Storage::disk('public')->put($basePath, $image587->encode());
+
+            // --- Работа с изображением 223x223 (миниатюра) ---
+            $thumbName = 'thumb_' . $fileName;
+            $thumbPath = 'uploads/' . $thumbName;
+
+            // Читаем изображение еще раз (чтобы не использовать уже измененный объект image587)
+            $image223 = $manager->read($imageFile->getRealPath());
+            $image223->cover(223, 223);
+
+            // Сохраняем миниатюру на диск 'public'
+            Storage::disk('public')->put($thumbPath, $image223->encode());
+
+            // В базу данных сохраняем путь к основному изображению
+            $data['img'] = $basePath;
+            // При необходимости сохранения пути к миниатюре в отдельное поле:
+            // $data['img_thumb'] = $thumbPath; 
         }
 
         $post = Post::create($data);
@@ -60,7 +93,7 @@ class PostController extends Controller
         $posts = Post::with('tags')
             ->where('is_publish', true)
             ->paginate(3);
-        $tags = Tag::all();    
+        $tags = Tag::all();
         return view('home', ['posts' => $posts, 'tags' => $tags]);
     }
 
