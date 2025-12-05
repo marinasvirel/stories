@@ -59,7 +59,7 @@ class PostController extends Controller
             // В базу данных сохраняем путь к основному изображению
             $data['img'] = $basePath;
             // При необходимости сохранения пути к миниатюре в отдельное поле:
-            // $data['img_thumb'] = $thumbPath; 
+            $data['img_thumb'] = $thumbPath;
         }
 
         $post = Post::create($data);
@@ -97,16 +97,9 @@ class PostController extends Controller
         return view('home', ['posts' => $posts, 'tags' => $tags]);
     }
 
-    public function readDetail(Post $post, $title_slug = null)
+    public function show(Post $post)
     {
-        $expectedSlug = Str::slug($post->title);
-        if ($title_slug !== $expectedSlug) {
-            return redirect()->route('readDetail', [
-                'post' => $post->id,
-                'title_slug' => $expectedSlug
-            ], 301);
-        }
-        return view('post.read', ['post' => $post]);
+        return view('post.read', compact('post'));
     }
 
     public function readModer()
@@ -117,10 +110,10 @@ class PostController extends Controller
         return view('user.dashboard', ['posts' => $posts]);
     }
 
-    public function readDetailModer($id)
+    public function readDetailModer(Request $request, $id)
     {
         $post = Post::findOrFail($id);
-        return view('user.moderation', ['post' => $post]);
+        return view('user.moderation', compact('post'));
     }
 
     public function showByTag($tag)

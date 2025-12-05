@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('author_name');
             $table->string('author_email');
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('text');
             $table->string('img');
+            $table->string('img_thumb');
             $table->boolean('is_publish')->default(false);
             $table->timestamps();
             $table->softDeletes();

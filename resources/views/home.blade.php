@@ -10,5 +10,5 @@
   </li>
   @endforeach
 </ul>
-<x-stories :posts="$posts" link-prefix="post/" />
+<x-stories :posts="$posts" route-name="show" />
 @endsection

@@ -14,13 +14,13 @@
       </ul>
       <div class="stories-content-box">
         <div class="stories-img-box">
-          <img class="stories-img" src="{{ asset('storage/' . $post->img) }}" alt="{{ $post->title }}">
+          <img class="stories-img" src="{{ asset('storage/' . $post->img_thumb) }}" alt="{{ $post->title }}">
         </div>
         <div class="stories-text-box">
           <div class="stories-text-container">
             <p class="stories-text">{{ $post->text }}</p>
           </div>
-          <a href="{{ url($linkPrefix . $post->id) }}" class="main-link">Читать</a>
+          <a href="{{ route($routeName, $post) }}" class="main-link">Читать</a>
         </div>
       </div>
     </li>
