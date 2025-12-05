@@ -6,7 +6,7 @@
       <ul class="stories-tags">
         @foreach($post->tags as $tag)
         <li class="stories-tags-item">
-          <a href="{{ route('showByTag', ['tag' => $tag->name ]) }}">
+          <a href="{{ url('posts/tag/' . $tag->name) }}">
             {{ $tag->name }}
           </a>
         </li>
