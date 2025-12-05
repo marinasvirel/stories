@@ -6,7 +6,7 @@
       <ul class="stories-tags">
         @foreach($post->tags as $tag)
         <li class="stories-tags-item">
-          <a href="{{ url('posts/tag/' . $tag->name) }}">
+          <a href="{{ url('posts/tag/' . $tag->name) }}" class="footer-link">
             {{ $tag->name }}
           </a>
         </li>
