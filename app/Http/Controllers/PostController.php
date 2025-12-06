@@ -85,7 +85,7 @@ class PostController extends Controller
         // 3. Синхронизируем все теги с постом
         $post->tags()->sync($tagIdsToAttach);
 
-        return redirect(route('createView'));
+        return redirect(route('createView'))->with('message', 'История отправлена на модерацию');
     }
 
     public function read()

@@ -1,6 +1,11 @@
 @extends('layouts.main')
 @section('title', 'Добавить историю')
 @section('content')
+@if (session('message'))
+<div class="alert-message">
+  {{ session('message') }}
+</div>
+@endif
 <form class="create-post" action="" method="post" enctype="multipart/form-data">
   @csrf
   <label for="author_name">Ваше имя</label>

@@ -270,11 +270,11 @@ footer .container {
   float: right;
   margin-left: 20px;
   margin-bottom: 20px;
-  width: 50%; 
+  width: 50%;
   object-fit: cover;
   object-position: center;
   height: 50vh;
-  background-color: grey; 
+  background-color: grey;
 }
 
 .story-content-under {
@@ -317,19 +317,23 @@ footer .container {
   cursor: default;
 }
 
+.alert-message {
+  color: green;
+}
+
 @media(max-width: 1020px) {
   .footer-img {
     display: none;
   }
 
   .story-img {
-  display: inline-block;
-  float: none;
-  margin-left: 0px;
-  width: 100%; 
-  object-fit: cover;
-  height: 40vh; 
-}
+    display: inline-block;
+    float: none;
+    margin-left: 0px;
+    width: 100%;
+    object-fit: cover;
+    height: 40vh;
+  }
 }
 
 @media(max-width: 744px) {
