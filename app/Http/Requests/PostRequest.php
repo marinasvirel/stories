@@ -27,9 +27,9 @@ class PostRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'text' => ['required', 'string'],
             'img' => ['required', 'image','mimes:jpeg,png,jpg,gif,webp', 'max:2048'],
-            'existing_tags' => ['required', 'array'],
+            'existing_tags' => ['array', 'required_without:new_tags',],
             'existing_tags.*' => ['required','exists:tags,id'],
-            'new_tags' => ['nullable', 'string', 'max:255'],
+            'new_tags' => ['nullable', 'string', 'max:255','required_without:existing_tags',],
         ];
     }
 
@@ -45,7 +45,8 @@ class PostRequest extends FormRequest
             'title.max' => 'Не более 255 символов',
             'text.required' => 'Обязательное поле',
             'img.required' => 'Обязательное поле',
-            'existing_tags.required' => 'Обязательное поле',
+            'existing_tags.required_without' => 'Обязательное поле, если теги не написаны вручную',
+            'new_tags.required_without' => 'Обязательное поле, если теги не выбраны из списка',
         ];
     }
 }
