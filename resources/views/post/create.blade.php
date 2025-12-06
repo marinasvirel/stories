@@ -30,7 +30,7 @@
     @enderror
   </div>
   <label for="text">Текст</label>
-  <textarea name="text" id="text" autocorrect placeholder="Давным-давно..." rows="5"></textarea>
+  <textarea name="text" id="text" autocorrect placeholder="Давным-давно..." rows="5">{{ old('text') }}</textarea>
   <div class="error-box">
     @error('text')
     {{ $message }}
