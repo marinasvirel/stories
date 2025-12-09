@@ -1,5 +1,5 @@
 <section class="story">
-  <h2>{{ $post->title }}</h2>
+  <h1>{{ $post->title }}</h1>
   <div class="story-content">
     <img class="story-img" src="{{ asset('storage/' . $post->img) }}" alt="{{ $post->title}}">
     <p class="story-text">{{ $post->text }}</p>
